@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7a48ab54-9c2c-4a25-bbac-5901a8b73ed4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/try/src/assets/add.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/try/src/assets/logon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/try/src/assets/main.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/try/src/assets/pet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/try/src/assets/plant.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/try/src/components/Room1.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/try/src/components/Room2.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/try/src/components/Room3.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/try/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/try/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/try/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/try/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/try/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/try/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/try/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/try/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/try/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/try/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/try/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/try/src/main.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/try" />
+  </component>
+  <component name="ProjectId" id="1ZPrJnjz1nF4jwBlqlHYBQrq5xn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vuuue" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\softwareEngneer\try\try\src\components" />
+      <recent name="D:\softwareEngneer\try\try\src\assets" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/try/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.serve" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7a48ab54-9c2c-4a25-bbac-5901a8b73ed4" name="Default Changelist" comment="" />
+      <created>1584751500517</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584751500517</updated>
+      <workItem from="1584751501848" duration="16150000" />
+      <workItem from="1585039526493" duration="2916000" />
+      <workItem from="1585095198425" duration="24642000" />
+      <workItem from="1585222257152" duration="2048000" />
+      <workItem from="1585357545605" duration="736000" />
+      <workItem from="1585362085573" duration="2556000" />
+      <workItem from="1585384410043" duration="380000" />
+      <workItem from="1585384996414" duration="3083000" />
+      <workItem from="1585442253116" duration="2679000" />
+      <workItem from="1585464090627" duration="15686000" />
+      <workItem from="1585787018763" duration="7989000" />
+      <workItem from="1586564868066" duration="245000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
