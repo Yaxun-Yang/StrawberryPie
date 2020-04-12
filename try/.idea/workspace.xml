@@ -23,6 +23,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue.vue" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/try" />
   </component>
@@ -30,7 +38,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vuuue" />
+    <property name="last_opened_file_path" value="E:/softwareEngineergit/try/try" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -95,7 +103,11 @@
       <workItem from="1585442253116" duration="2679000" />
       <workItem from="1585464090627" duration="15686000" />
       <workItem from="1585787018763" duration="7989000" />
-      <workItem from="1586564868066" duration="245000" />
+      <workItem from="1586564868066" duration="845000" />
+      <workItem from="1586568367974" duration="2832000" />
+      <workItem from="1586571881534" duration="68000" />
+      <workItem from="1586608559710" duration="814000" />
+      <workItem from="1586650552433" duration="16981000" />
     </task>
     <servers />
   </component>
