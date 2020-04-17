@@ -1,5 +1,7 @@
-from flask import Blueprint, request, render_template, make_response, abort, Response, session, jsonify
-from ..models import Bedroom, Environment, Toilet, Balcony
+import json
+
+from flask import Blueprint, request, render_template, make_response, abort, Response, session, jsonify, url_for
+from ..models import Bedroom, Environment, Toilet, Balcony, Information
 from ..requestuser.User import User
 from .first import user
 from App.ext import db
@@ -271,7 +273,7 @@ def change_room1_watercon(watercon):
     water = 0
     if watercon == 'true':
         water = 1
-        count = count+1
+        count = count + 1
     else:
         water = 0
         count = count - 1
@@ -338,6 +340,13 @@ def change_room3_lightcon(lightcon):
 def warning_door():
     roomnumber = user.roomnum
     print("已接受到门未🔒警告信息")
+
+    #这里需要发短信通知用户 已列出 电话，用户名，宿舍号信息
+    information = Information.query.filter_by(username=user.username).first()
+    phone_number = information.phonenum
+    student_name = information.username
+    student_roomnumber = information.roomnumber
+
     response_consume_dic = {
         "meta": {
             "msg": "发送成功",
@@ -345,3 +354,5 @@ def warning_door():
         }
     }
     return jsonify(response_consume_dic)
+
+

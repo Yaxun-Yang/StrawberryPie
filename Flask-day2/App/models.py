@@ -117,3 +117,18 @@ class Rules(db.Model):
     lampremindtime = db.Column(db.String(45))
 
 
+class Warn(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    address = db.Column(db.String(45))
+    type = db.Column(db.String(45))
+    time = db.Column(db.DATETIME)
+    video = db.Column(db.String(45))
+
+
+class Dormcondition(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    address = db.Column(db.String(45))
+    door = db.Column(db.Integer)
+    aircondition = db.Column(db.Integer)
+    invasion = db.Column(db.Integer)
+

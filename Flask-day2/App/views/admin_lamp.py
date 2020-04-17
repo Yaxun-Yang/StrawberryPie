@@ -1,6 +1,5 @@
 from flask import Blueprint, request, render_template, make_response, abort, Response, session, jsonify
 from ..models import Information, Consumption, Environment, Plant, Login, Admin, Bedroom, Rules
-from ..requestuser.User import User
 from App.ext import db
 from App.views.first import user
 admin_lamp = Blueprint('admin_lamp', __name__)

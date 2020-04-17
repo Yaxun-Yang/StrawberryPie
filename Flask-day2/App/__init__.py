@@ -7,6 +7,9 @@ from App.views.pet import pet
 from App.views.room import room
 from App.views.admin_lamp import admin_lamp
 from App.views.admin_students_information import students
+from App.views.video import video
+from App.views.warning import warn
+from App.views.manage_exception import exception
 
 
 def create_app():
@@ -17,6 +20,9 @@ def create_app():
     app.register_blueprint(room)
     app.register_blueprint(admin_lamp)
     app.register_blueprint(students)
+    app.register_blueprint(video)
+    app.register_blueprint(warn)
+    app.register_blueprint(exception)
     init_ext(app)
     app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:123456@localhost:3306/hello"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

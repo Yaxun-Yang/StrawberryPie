@@ -30,6 +30,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Python Program\Flask-day2\App\static" />
       <recent name="E:\Python Program\Flask-day2\App\views" />
       <recent name="E:\Python Program\Flask-day2\App" />
     </key>
@@ -121,6 +122,9 @@
       <workItem from="1586845228424" duration="5558000" />
       <workItem from="1586855447357" duration="4321000" />
       <workItem from="1586938037109" duration="7382000" />
+      <workItem from="1587038220394" duration="608000" />
+      <workItem from="1587082981751" duration="13422000" />
+      <workItem from="1587119068281" duration="6184000" />
     </task>
     <servers />
   </component>
@@ -152,10 +156,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="277" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585193005076" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1586671475772">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1587122658218">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1586671475772" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1587122658218" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Flask_day2$get_environment_condition.coverage" NAME="get_environment_condition Coverage Results" MODIFIED="1585191033020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/App/environment" />
