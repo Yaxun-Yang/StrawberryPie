@@ -87,8 +87,10 @@ export default {
           // window.sessionStorage.setItem('data', res.data)
           //2. 通过编程式导航跳转到后台主页，路由地址是 /home
           this.$router.push('/home')
+          this.$message.success("登陆成功")
         }
         else if(res.status == 'admin') {
+          window.sessionStorage.setItem('token', res.data.token)
           window.sessionStorage.setItem('manager', res.data.manager)
           window.sessionStorage.setItem('name', res.data.manager.name)
           window.sessionStorage.setItem('id', res.data.manager.id)
@@ -102,8 +104,9 @@ export default {
           // window.sessionStorage.setItem('data', res.data)
           //2. 通过编程式导航跳转到后台主页，路由地址是 /home
           this.$router.push('/homeadmin')
+          this.$message.success("登陆成功")
         }
-        this.$message.success("登陆成功")
+
       })
     }
   }

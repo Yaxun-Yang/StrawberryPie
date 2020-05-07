@@ -27,7 +27,7 @@
   export default {
     data() {
       return {
-        warn: "nothing",
+        warn: "",
         is_warning: false,
         is_air_warning: false,
         air_message: "正常",

@@ -4,7 +4,7 @@
             <!-- 头部区域 -->
             <el-header>
                 <div>
-                    <img src="../assets/heima.png" alt />
+                    <img src="../assets/main.png"/>
                     <span>智能宿舍监控系统</span>
                 </div>
                 <el-menu
@@ -15,7 +15,7 @@
                         :default-active="activePath"
                         :router="true"
                 >
-                    <el-menu-item index="/login" @click="saveNavState('/manage_home')">首页</el-menu-item>
+<!--                    <el-menu-item index="/login" @click="saveNavState('/manage_home')">首页</el-menu-item>-->
                     <el-menu-item index="logout" @click="saveNavState('/logout')">退出</el-menu-item>
                 </el-menu>
             </el-header>
@@ -337,5 +337,8 @@
 
     .img {
         margin-top: 0px;
+    }
+    img {
+        width: 100px;
     }
 </style>

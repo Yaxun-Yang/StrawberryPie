@@ -23,7 +23,7 @@
                     <!-- 上传图片 -->
                     <el-col :offset="8">
                         <el-avatar shape="square" :size="100" :src="require('../assets/pet.png')" :fit="fill"></el-avatar>
-                        <div class="pet_name">宠物</div>
+                        <div class="pet_name">{{item.petName}}</div>
                     </el-col>
                 </el-row>
 
@@ -233,7 +233,7 @@
 
             // 点击按钮，添加卡片
             async addPet() {
-                const { data: res } = await this.$http.post('pet')
+                const { data: res } = await this.$http.post('pet/add')
                 if (res.meta.status !== 201) {
                     return this.$message.error('添加宠物失败')
                 }

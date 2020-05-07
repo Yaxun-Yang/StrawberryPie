@@ -69,6 +69,14 @@ class Plant(db.Model):
     amount = db.Column(db.Integer)
     watertime = db.Column(db.String(45))
 
+    def __init__(self, roomnumber, plantname, imgurl, percent, amount, watertime):
+        self.roomnumber = roomnumber
+        self.plantname = plantname
+        self.imgurl = imgurl
+        self.percent = percent
+        self.amount = amount
+        self.watertime = watertime
+
 
 class Pet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -78,6 +86,14 @@ class Pet(db.Model):
     percent = db.Column(db.Integer)
     amount = db.Column(db.Integer)
     feedtime = db.Column(db.String(45))
+
+    def __init__(self, roomnumber, petname, imgurl, percent, amount, feedtime):
+        self.roomnumber = roomnumber
+        self.petname = petname
+        self.imgurl = imgurl
+        self.percent = percent
+        self.amount = amount
+        self.feedtime = feedtime
 
 
 class Bedroom(db.Model):
@@ -132,3 +148,10 @@ class Dormcondition(db.Model):
     aircondition = db.Column(db.Integer)
     invasion = db.Column(db.Integer)
 
+
+class Historyvideo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    time = db.Column(db.DATETIME)
+    type = db.Column(db.Integer)
+    video = db.Column(db.String(45))
+    roomnum = db.Column(db.String(45))

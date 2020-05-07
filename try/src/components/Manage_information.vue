@@ -121,7 +121,7 @@
         methods: {
             async getManager() {
                 const { data: res } = await this.$http.get('manager', {
-                    param: this.manager.id })
+                    params: this.manager.id })
                 if (res.meta.status !== 200) {
                     return this.$message.error('获取管理员信息失败')
                 }

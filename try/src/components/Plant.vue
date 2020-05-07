@@ -24,7 +24,7 @@
           <!-- 上传图片 -->
           <el-col :offset="8">
             <el-avatar shape="square" :size="100" :src="require('../assets/plant.png')" :fit="fill"></el-avatar>
-            <div class="plant_name">盆栽</div>
+            <div class="plant_name">{{item.plantName}}</div>
           </el-col>
         </el-row>
 
@@ -236,7 +236,7 @@
 
       // 点击按钮，添加卡片
       async addPlant() {
-        const { data: res } = await this.$http.post('plant')
+        const { data: res } = await this.$http.post('plant/add')
         if (res.meta.status !== 201) {
           return this.$message.error('添加植物失败')
         }

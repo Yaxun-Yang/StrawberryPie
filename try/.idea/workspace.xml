@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac9ff5dd-8c44-4d0f-9868-8709c9c0a1a0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/main.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/pet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/plant.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Room1.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Room2.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Room3.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-    </list>
+    <list default="true" id="ac9ff5dd-8c44-4d0f-9868-8709c9c0a1a0" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,12 +12,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ambKv7m3RS7MohdlTOKhLk6nfu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="D:\softwareEngneer\try\try\node_modules\prettier" />
   </component>
@@ -76,6 +65,17 @@
       <option name="presentableId" value="Default" />
       <updated>1587343655959</updated>
       <workItem from="1587343657244" duration="41000" />
+      <workItem from="1587543402490" duration="2295000" />
+      <workItem from="1587601782272" duration="3732000" />
+      <workItem from="1587640362995" duration="1476000" />
+      <workItem from="1587803885266" duration="1228000" />
+      <workItem from="1587868054976" duration="557000" />
+      <workItem from="1587959213321" duration="1781000" />
+      <workItem from="1587994636268" duration="989000" />
+      <workItem from="1588141266678" duration="10523000" />
+      <workItem from="1588165521731" duration="1736000" />
+      <workItem from="1588206701551" duration="94000" />
+      <workItem from="1588811763779" duration="8426000" />
     </task>
     <servers />
   </component>
@@ -87,7 +87,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

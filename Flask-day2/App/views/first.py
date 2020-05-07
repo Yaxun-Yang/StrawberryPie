@@ -2,17 +2,20 @@ from flask import Blueprint, request, render_template, make_response, abort, Res
 from ..models import Information, Consumption, Environment, Plant, Login, Admin
 from ..requestuser.User import User
 from App.ext import db
+from App.token.build_token import Token
 blue = Blueprint('blue', __name__)
 
 
 user = User("1", "2", " ")
+userList = []
 
 
 @blue.route('/api/login', methods=['GET', 'POST'])
 def try_vue():
     getUsername = request.get_json()['username']
     getPassword = request.get_json()['password']
-    token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1MTI1NDQyOTksImV4cCI6MTUxMjYzMDY5OX0.eGrsrvwHm-tPsO9r_pxHIQ5i5L1kX9RX444uwnRGaIM"
+    tokenprogramer = Token('api_secret具体值', 'project_code具体值', 'account具体值')
+    token = tokenprogramer.get_token()
     login = Login.query.filter_by(username=getUsername, password=getPassword).all()
     print(login[0].authetic)
     print(login[0].name)
@@ -42,11 +45,12 @@ def try_vue():
             "status": "admin"
         }
         user.update_user(getUsername, admin.address, token)
+        userList.append(user)
         return jsonify(response_dic)
     else:
         print("用户登录")
         # print(getUsername)
-        information = Information.query.filter_by(username='李梦瑶').all()
+        information = Information.query.filter_by(stuid=getUsername).all()
         # print(information)
         resData = []
         for x in information:
@@ -65,7 +69,7 @@ def try_vue():
         print("information" + resData[0]["roomnumber"])
 
         user.update_user(resData[0]["username"], resData[0]["roomnumber"], token)
-
+        userList.append(user)
         response_dic = {
             "data": {
                 "id": 500,
@@ -118,8 +122,9 @@ def get_information():
     username = user.username
     roomnum = user.roomnum
     if not dateRange:
-        consume = Consumption.query.filter_by(roomnum='新二舍102').paginate(page=int(page_num), per_page=int(page_size), error_out=False)
-        total_page = len(consume.items)
+        consume_all = Consumption.query.filter_by(roomnum='新二舍102').all()
+        consume = Consumption.query.filter(Consumption.roomnum.contains('新二舍102')).paginate(page=int(page_num), per_page=int(page_size), error_out=False)
+        total_page = len(consume_all)
         consume_result = []
         for x in consume.items:
             print(x.water)
@@ -130,7 +135,7 @@ def get_information():
             })
         response_consume_dic = {
             "data": {
-                "totalpage": total_page,
+                "total": total_page,
                 "pagenum": page_num,
                 "information": consume_result
             },
@@ -155,7 +160,7 @@ def get_information():
 
         response_consume_dic = {
             "data": {
-                "totalpage": total_page,
+                "total": total_page,
                 "pagenum": page_num,
                 "information": consume_result
             },

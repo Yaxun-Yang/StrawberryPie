@@ -1,40 +1,48 @@
 from flask import Blueprint, request, render_template, make_response, abort, Response, session, jsonify
 from ..models import Information, Consumption, Environment, Plant, Pet
-from ..requestuser.User import User
-from .first import user
 from App.ext import db
 from .environment.get_environment import insert_environment
+from App.warning.catch_pet import catch_pet
+from .first import userList
+from App.token.authorization_token import authorization_token
 
 pet = Blueprint('pet', __name__)
 
 
 def get_pet_list():
-    pets = Pet.query.filter_by(roomnumber='新二舍102').all()
-    # 查询plant
-    pet_type = Pet.query.filter_by(roomnumber='新二舍102').with_entities(Pet.petname).distinct().all()
-    pet_list = []
-    for p in pets:
-        time = p.feedtime.split('+')
-        time_list = []
-        i = 0
-        for t in time:
-            i = i + 1
-            time_list.append(
+    user_token = request.headers.get("Authorization")
+    print(user_token)
+    user_pet = authorization_token(userList, user_token)
+    if user_pet is not None:
+        pets = Pet.query.filter_by(roomnumber=user_pet.roomnum).all()
+        # 查询plant
+        pet_type = Pet.query.filter_by(roomnumber=user_pet.roomnum).with_entities(Pet.petname).distinct().all()
+        pet_list = []
+        for p in pets:
+            time = p.feedtime.split('+')
+            time_list = []
+            i = 0
+            for t in time:
+                i = i + 1
+                time_list.append(
+                    {
+                        'time': t,
+                        'timeId': i
+                    }
+                )
+            pet_list.append(
                 {
-                    'time': t,
-                    'timeId': i
+                    'petName': p.petname,
+                    'petId': p.id,
+                    'timeList': time_list,
+                    'percent': p.percent,
+                    'amount': p.amount,
+                    'imagUrl': p.imgurl
                 }
             )
-        pet_list.append(
-            {
-                'petId': p.id,
-                'timeList': time_list,
-                'percent': p.percent,
-                'amount': p.amount,
-                'imagUrl': p.imgurl
-            }
-        )
-    return pet_list
+        return pet_list
+    else:
+        return None
 
 
 def get_environment():
@@ -57,8 +65,7 @@ def pet_information():
                 'outdoor_temperature': environment.outdoortem,
                 'indoor_humidity': environment.indoorhum,
                 'outdoor_humidity': environment.outdoorhum,
-                'petList': pet_list,
-                "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1MTI1NDQyOTksImV4cCI6MTUxMjYzMDY5OX0.eGrsrvwHm-tPsO9r_pxHIQ5i5L1kX9RX444uwnRGaIM"
+                'petList': pet_list
             },
             "meta": {
                 "msg": "植物创建成功",
@@ -73,8 +80,7 @@ def pet_information():
                 'outdoor_temperature': environment.outdoortem,
                 'indoor_humidity': environment.indoorhum,
                 'outdoor_humidity': environment.outdoorhum,
-                'petList': pet_list,
-                "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1MTI1NDQyOTksImV4cCI6MTUxMjYzMDY5OX0.eGrsrvwHm-tPsO9r_pxHIQ5i5L1kX9RX444uwnRGaIM"
+                'petList': pet_list
             },
             "meta": {
                 "msg": "查询成功",
@@ -97,8 +103,7 @@ def remove_pet(petId):
             'outdoor_temperature': environment.outdoortem,
             'indoor_humidity': environment.indoorhum,
             'outdoor_humidity': environment.outdoorhum,
-            'petList': pet_list,
-            "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1MTI1NDQyOTksImV4cCI6MTUxMjYzMDY5OX0.eGrsrvwHm-tPsO9r_pxHIQ5i5L1kX9RX444uwnRGaIM"
+            'petList': pet_list
         },
         "meta": {
             "msg": "删除成功",
@@ -189,8 +194,7 @@ def change_pet_mount(petId, amount):
     pet_list = get_pet_list()
     response_consume_dic = {
         "data": {
-            'petList': pet_list,
-            "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1MTI1NDQyOTksImV4cCI6MTUxMjYzMDY5OX0.eGrsrvwHm-tPsO9r_pxHIQ5i5L1kX9RX444uwnRGaIM"
+            'petList': pet_list
         },
         "meta": {
             "msg": "修改成功",
@@ -215,8 +219,7 @@ def change_pet_feed_time(petId, time):
             'outdoor_temperature': environment.outdoortem,
             'indoor_humidity': environment.indoorhum,
             'outdoor_humidity': environment.outdoorhum,
-            'petList': pet_list,
-            "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1MTI1NDQyOTksImV4cCI6MTUxMjYzMDY5OX0.eGrsrvwHm-tPsO9r_pxHIQ5i5L1kX9RX444uwnRGaIM"
+            'petList': pet_list
         },
         "meta": {
             "msg": "查询成功",
@@ -224,3 +227,38 @@ def change_pet_feed_time(petId, time):
         }
     }
     return jsonify(response_consume_dic)
+
+
+@pet.route("/api/pet/add", methods=['POST'])
+def add_pet():
+    new_pet = catch_pet()
+    if new_pet is not None:
+        judge = True
+    else:
+        judge = False
+    if judge:
+        pet_name = new_pet.get("pet_name")
+        img_url = new_pet.get("img_url")
+        pet_add = Pet("新二舍102", pet_name, img_url, "20", "70", "10:00:00")
+        db.session.add(pet_add)
+        db.session.commit()
+        print(pet_name)
+        pet_list = get_pet_list()
+        response = {
+            "data": {
+                "petList": pet_list
+            },
+            "meta": {
+                "msg": "添加成功",
+                "status": 201
+            }
+        }
+        return jsonify(response)
+    else:
+        response = {
+            "meta": {
+                "msg": "未检测到新宠物",
+                "status": 200
+            }
+        }
+        return jsonify(response)
