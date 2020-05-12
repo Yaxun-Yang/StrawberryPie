@@ -4,7 +4,7 @@
             <!-- 头部区域 -->
             <el-header>
                 <div>
-                    <img src="../assets/heima.png" alt />
+                    <img src="../assets/main.png" alt />
                     <span>智能宿舍监控系统</span>
                 </div>
                 <el-menu
@@ -15,7 +15,7 @@
                         :default-active="activePath"
                         :router="true"
                 >
-                    <el-menu-item index="/welcome" @click="saveNavState('/manage_home')">首页</el-menu-item>
+                    <el-menu-item index="/manage_home" @click="saveNavState('/manage_home')">首页</el-menu-item>
                     <el-menu-item index="logout" @click="saveNavState('/logout')">退出</el-menu-item>
                 </el-menu>
             </el-header>
@@ -27,6 +27,18 @@
                     <router-view></router-view>
                     <h4>异常情况查看</h4>
                     <el-card>
+                        <el-row :gutter="20">
+                            <el-col :span="10">
+                                <div>
+                                    <el-input placeholder="请输入宿舍号查询" v-model="queryInfo.query" clearable @clear="getExceptionList"></el-input>    
+                                </div>
+                            </el-col>
+                            <el-col :span="10">
+                                <div>
+                                    <el-button type="primary" icon="el-icon-search" @click="getExceptionList"></el-button>
+                                </div>
+                            </el-col>
+                        </el-row>
                         <el-row>
                             <!-- 表格区域 -->
                             <el-table :data="exceptionList">
@@ -92,6 +104,15 @@
             handleCurrentChange(newPage) {
                 this.queryInfo.pagenum = newPage
                 this.getExceptionList()
+            },
+            saveNavState(activePath) {
+                if (activePath == '/logout') {
+                    window.sessionStorage.clear()
+                    this.$router.push('/login')
+                } else {
+                    window.sessionStorage.setItem('activePath', activePath)
+                    this.activePath = activePath
+                }
             }
         }
     }
@@ -164,6 +185,9 @@
 
     .el-main {
         background-color: #fff;
+    }
+    img {
+        width: 100px;
     }
 
 </style>

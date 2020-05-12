@@ -4,7 +4,7 @@
       <!-- 头部区域 -->
       <el-header>
         <div>
-          <img src="../assets/heima.png" alt />
+          <img src="../assets/main.png" alt />
           <span>智能宿舍监控系统</span>
         </div>
         <el-menu
@@ -144,6 +144,15 @@ export default {
     handleCurrentChange(newPage) {
       this.queryInfo.pagenum = newPage
       this.getDormList()
+    },
+    saveNavState(activePath) {
+      if (activePath == '/logout') {
+        window.sessionStorage.clear()
+        this.$router.push('/login')
+      } else {
+        window.sessionStorage.setItem('activePath', activePath)
+        this.activePath = activePath
+      }
     }
   }
 }
@@ -219,5 +228,8 @@ export default {
 }
 .el-pagination {
   margin-top: 15px;
+}
+img {
+  width: 100px;
 }
 </style>

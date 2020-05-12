@@ -35,21 +35,21 @@
           <strong>房间所住人员：软件工程1801李梦瑶</strong>
         </span>
         <br />
-<!--        <div v-for="fre in users_info.roommate" :key="fre">-->
-<!--          <span style="padding-left:112px;">-->
-<!--            <strong>{{fre}}</strong>-->
-<!--          </span>-->
-<!--          <br />-->
+        <div v-for="fre in users_info.roommate" :key="fre">
           <span style="padding-left:112px;">
-            <strong>软件工程1802阳雅珣</strong>
+            <strong>{{fre}}</strong>
           </span>
-                  <span style="padding-left:112px;">
-                    <strong>软件工程1801刘毅菲</strong>
-                  </span>
-                  <span style="padding-left:112px;">
-                    <strong>软件工程1802阳雅珣</strong>
-                  </span>
-<!--        </div>-->
+          <br />
+<!--          <span style="padding-left:112px;">-->
+<!--            <strong>软件工程1802阳雅珣</strong>-->
+<!--          </span>-->
+<!--                  <span style="padding-left:112px;">-->
+<!--                    <strong>软件工程1801刘毅菲</strong>-->
+<!--                  </span>-->
+<!--                  <span style="padding-left:112px;">-->
+<!--                    <strong>软件工程1802阳雅珣</strong>-->
+<!--                  </span>-->
+        </div>
       </el-card>
       <div class="button">
         <el-button type="text" @click="dialogFormVisible = true">修改密码</el-button>
@@ -69,7 +69,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+        <el-button type="primary" @click=passwordChange>确 定</el-button>
       </div>
     </el-dialog>
     <el-dialog title="修改手机号" :visible.sync="dialogForm1Visible">
@@ -84,7 +84,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogForm1Visible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogForm1Visible = false">确 定</el-button>
+        <el-button type="primary" @click=phoneNumberChange>确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -126,6 +126,23 @@ export default {
       this.users_info["stutype"] = window.sessionStorage.getItem("stutype")
       this.users_info["phonenum"] = window.sessionStorage.getItem("phonenum")
       this.users_info["time"] = window.sessionStorage.getItem("time")
+    },
+    async passwordChange() {
+      this.dialogFormVisible = false
+      let password = this.form.newpassword
+      const {data: res} = await this.$http.post("password/change", {"password": password})
+      if(res.meta.status == '200') {
+        this.$message.success("修改成功")
+      }
+    },
+    async phoneNumberChange() {
+      this.dialogForm1Visible = false
+      let phone_number = this.form1.phonenumber
+      let code = this.form1.yanzheng
+      const {data: res} = await this.$http.post("phone/change", {"phonenum": phone_number,"code": code})
+      if(res.meta.status == '200') {
+        this.$message.success("修改成功")
+      }
     }
   },
   created() {

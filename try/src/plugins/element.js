@@ -8,7 +8,8 @@ import {
     Slider,
     Popover,
     Select,
-    Option
+    Option,
+    Alert
 
 } from 'element-ui'
 
@@ -47,6 +48,7 @@ Vue.use(Slider)
 Vue.use(Popover)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Alert)
 
 //导入弹框提示组建
 Vue.prototype.$message = Message

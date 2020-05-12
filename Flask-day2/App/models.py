@@ -108,6 +108,11 @@ class Bedroom(db.Model):
     airconditioncon = db.Column(db.Integer)
     watertemp = db.Column(db.String(45))
     watercon = db.Column(db.Integer)
+    doorwarn = db.Column(db.Integer)
+    temhigh = db.Column(db.Integer)
+    humhigh = db.Column(db.Integer)
+    temlow = db.Column(db.Integer)
+    humlow = db.Column(db.Integer)
 
 
 class Toilet(db.Model):
@@ -116,6 +121,10 @@ class Toilet(db.Model):
     devnum = db.Column(db.Integer())
     lamplight = db.Column(db.String(45))
     lampcon = db.Column(db.Integer)
+    temhigh = db.Column(db.Integer)
+    humhigh = db.Column(db.Integer)
+    temlow = db.Column(db.Integer)
+    humlow = db.Column(db.Integer)
 
 
 class Balcony(db.Model):
@@ -124,6 +133,10 @@ class Balcony(db.Model):
     devnum = db.Column(db.Integer())
     lamplight = db.Column(db.String(45))
     lampcon = db.Column(db.Integer)
+    temhigh = db.Column(db.Integer)
+    humhigh = db.Column(db.Integer)
+    temlow = db.Column(db.Integer)
+    humlow = db.Column(db.Integer)
 
 
 class Rules(db.Model):

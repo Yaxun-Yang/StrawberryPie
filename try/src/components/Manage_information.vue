@@ -4,7 +4,7 @@
             <!-- 头部区域 -->
             <el-header>
                 <div>
-                    <img src="../assets/heima.png" alt />
+                    <img src="../assets/main.png" alt />
                     <span>智能宿舍监控系统</span>
                 </div>
                 <el-menu
@@ -15,7 +15,7 @@
                         :default-active="activePath"
                         :router="true"
                 >
-                    <el-menu-item index="/welcome" @click="saveNavState('/manage_home')">首页</el-menu-item>
+                    <el-menu-item index="/manage_home" @click="saveNavState('/manage_home')">首页</el-menu-item>
                     <el-menu-item index="logout" @click="saveNavState('/logout')">退出</el-menu-item>
                 </el-menu>
             </el-header>
@@ -140,6 +140,15 @@
                     return this.$message.error('修改密码失败')
                 }
                 this.$message.success('修改成功')
+            },
+            saveNavState(activePath) {
+                if (activePath == '/logout') {
+                    window.sessionStorage.clear()
+                    this.$router.push('/login')
+                } else {
+                    window.sessionStorage.setItem('activePath', activePath)
+                    this.activePath = activePath
+                }
             }
         }
     }
@@ -249,5 +258,8 @@
 
     .el-main {
         background-color: #fff;
+    }
+    img {
+        width: 100px;
     }
 </style>

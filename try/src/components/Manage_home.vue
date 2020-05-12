@@ -15,7 +15,7 @@
                         :default-active="activePath"
                         :router="true"
                 >
-<!--                    <el-menu-item index="/login" @click="saveNavState('/manage_home')">首页</el-menu-item>-->
+                    <el-menu-item index="/manage_home" @click="saveNavState('/manage_home')">首页</el-menu-item>
                     <el-menu-item index="logout" @click="saveNavState('/logout')">退出</el-menu-item>
                 </el-menu>
             </el-header>
@@ -187,6 +187,15 @@
                 }
                 this.manager = res.data.manager
                 console.log(res)
+            },
+            saveNavState(activePath) {
+                if (activePath == '/logout') {
+                    window.sessionStorage.clear()
+                    this.$router.push('/login')
+                } else {
+                    window.sessionStorage.setItem('activePath', activePath)
+                    this.activePath = activePath
+                }
             }
         }
     }

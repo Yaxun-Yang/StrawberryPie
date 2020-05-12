@@ -21,6 +21,7 @@ def get_video_now():
 @video.route("/api/video/history", methods=['GET'])
 def get_video_history():
     # 查看历史视频App/static/VID_20200429_152207.mp4E:\Python Program\Flask-day2\App\static\VID_20200429_161822.mp4
+    # 根据存放路径修改
     base_path = "E:\\Python Program\\Flask-day2\\App\\static\\"
     global video_name
     print("now"+video_name)
@@ -37,6 +38,7 @@ def get_video_history():
             "status": 200
         }
     }
+    # 变换类型需修改
     return Response(video_history, content_type='video/mp4')
 
 

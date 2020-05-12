@@ -7,25 +7,51 @@
       <el-breadcrumb-item>主卧室</el-breadcrumb-item>
     </el-breadcrumb>
     <h1>您的卫生间共1台设备，已连接{{value}}台</h1>
-    <el-card class="card1" shadow="always">
-      <!-- 安全范围 -->
-      <el-popover placement="right" width="270" height="400" trigger="click">
-        温度<el-slider v-model="setTemp" range :marks="marks1"></el-slider>
-        <br>
-        湿度<el-slider v-model="sethumid" range :marks="marks2"></el-slider>
-        <el-button class="change" slot="reference" type="primary" plain>
-          <span class="change_text">点击以修改安全范围</span>
-        </el-button>
-      </el-popover>
+<!--    <el-card class="card1" shadow="always">-->
+<!--      &lt;!&ndash; 安全范围 &ndash;&gt;-->
+<!--      <el-popover placement="right" width="270" height="400" trigger="click">-->
+<!--        温度<el-slider v-model="setTemp" range :marks="marks1"></el-slider>-->
+<!--        <br>-->
+<!--        湿度<el-slider v-model="sethumid" range :marks="marks2"></el-slider>-->
+<!--        <el-button class="change" slot="reference" type="primary" plain>-->
+<!--          <span class="change_text">点击以修改安全范围</span>-->
+<!--        </el-button>-->
+<!--      </el-popover>-->
+<!--      &lt;!&ndash; 显示温度湿度 &ndash;&gt;-->
+<!--        <span>-->
+<!--          <el-button icon="el-icon-sunny" circle size="small"></el-button>-->
+<!--          <b> {{temp}}</b>℃-->
+<!--        </span>-->
+<!--        <el-divider direction="vertical"></el-divider>-->
+<!--        <span class="humidity">{{humid}}%</span>-->
+<!--        <span class="humidity_text">空气湿度</span>-->
+<!--      </el-card>-->
+    <el-card class="card1" shadow="always" style="width: 300px;height: 280px;">
       <!-- 显示温度湿度 -->
-        <span>
-          <el-button icon="el-icon-sunny" circle size="small"></el-button>
-          <b> {{temp}}</b>℃
-        </span>
-        <el-divider direction="vertical"></el-divider>
-        <span class="humidity">{{humid}}%</span>
-        <span class="humidity_text">空气湿度</span>
-      </el-card>
+      <div style="background-color: #fffeeb;width: 180px;">
+       <span style="font-size: 20px">
+         <span style="color: dimgray;">
+           <i class="el-icon-sunny" ></i>
+         </span>
+         <b> {{temp}}</b>℃
+       </span>
+        <el-divider direction="vertical" style="width: 100%;"></el-divider>
+        <div>
+          <span class="humidity">{{humid}}%</span>
+          <span class="humidity_text">空气湿度</span>
+        </div>
+      </div>
+      <!-- 安全范围 -->
+      <br>
+      <div>
+        <span style="color: gray; font-size: 10px;">您预定的安全范围为</span>
+        <div style="color: #636363; font-size: 14px; background-color: #f9fafc;width: 280px">
+          「温度」<el-slider v-model="setTemp" range :marks="marks1" @change="temChange()"></el-slider>
+          <el-divider style="width: 100%;"></el-divider>
+          「湿度」<el-slider v-model="setHumid" range :marks="marks2" @change="humChange()"></el-slider>
+        </div>
+      </div>
+    </el-card>
     <!-- 挂灯 -->
     <br>
     <el-card class="card2" shadow="always">
@@ -129,6 +155,26 @@ export default {
       }
       this.value = conNum
       console.log("conDev"+this.value)
+    },
+    async temChange() {
+      let temperature = {
+        "low_temp": this.setTemp[0],
+        "high_temp": this.setTemp[1]
+      }
+      const {data: res} = await this.$http.get("room2/tem", {
+        params: temperature
+      })
+      console.log(res)
+    },
+    async humChange() {
+      let humid = {
+        "low_hum": this.setHumid[0],
+        "high_hum": this.setHumid[1]
+      }
+      const {data: res} = await this.$http.get("room2/hum", {
+        params: humid
+      })
+      console.log(res)
     }
   },
   created() {

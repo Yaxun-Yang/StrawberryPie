@@ -24,6 +24,8 @@ def get_bedroom_information():
     roomnumber = user.roomnum
     bedrooms = Bedroom.query.filter_by(roomnumber='新二舍102').all()
     environment = get_environment()
+    set_tem = [bedrooms[0].temlow, bedrooms[0].temhigh]
+    set_hum = [bedrooms[0].humlow, bedrooms[0].humhigh]
     bedroom_result = {
         'temp': environment.indoortem,
         'humid': environment.indoorhum,
@@ -61,7 +63,8 @@ def get_bedroom_information():
             'value4': bedroom_result['value4'],
             'value5': bedroom_result['value5'],
             'value6': bedroom_result['value6'],
-            "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1MTI1NDQyOTksImV4cCI6MTUxMjYzMDY5OX0.eGrsrvwHm-tPsO9r_pxHIQ5i5L1kX9RX444uwnRGaIM"
+            "setTemp": set_tem,
+            "setHumid": set_hum
         },
         "meta": {
             "msg": "获取成功",
@@ -120,7 +123,8 @@ def change_water(watertem):
 def get_toilet_information():
     roomnumber = user.roomnum
     toilet = Toilet.query.filter_by(roomnumber='新二舍102').all()
-    # print(roomnumber)
+    set_tem = [toilet[0].temlow, toilet[0].temhigh]
+    set_hum = [toilet[0].humlow, toilet[0].humhigh]
     environment = get_environment()
     bedroom_result = {
         'temp': environment.indoortem,
@@ -142,7 +146,8 @@ def get_toilet_information():
             'value': bedroom_result['value'],
             'value1': bedroom_result['value1'],
             'value2': bedroom_result['value2'],
-            "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1MTI1NDQyOTksImV4cCI6MTUxMjYzMDY5OX0.eGrsrvwHm-tPsO9r_pxHIQ5i5L1kX9RX444uwnRGaIM"
+            "setTemp": set_tem,
+            "setHumid": set_hum
         },
         "meta": {
             "msg": "获取成功",
@@ -171,7 +176,8 @@ def change_room2_light(light):
 def get_balcony_information():
     roomnumber = user.roomnum
     balcony = Balcony.query.filter_by(roomnumber='新二舍102').all()
-    # print(roomnumber)
+    set_tem = [balcony[0].temlow, balcony[0].temhigh]
+    set_hum = [balcony[0].humlow, balcony[0].humhigh]
     environment = get_environment()
     bedroom_result = {
         'temp': environment.indoortem,
@@ -193,7 +199,8 @@ def get_balcony_information():
             'value': bedroom_result['value'],
             'value1': bedroom_result['value1'],
             'value2': bedroom_result['value2'],
-            "token": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUwMCwicmlkIjowLCJpYXQiOjE1MTI1NDQyOTksImV4cCI6MTUxMjYzMDY5OX0.eGrsrvwHm-tPsO9r_pxHIQ5i5L1kX9RX444uwnRGaIM"
+            "setTemp": set_tem,
+            "setHumid": set_hum
         },
         "meta": {
             "msg": "获取成功",
@@ -354,5 +361,110 @@ def warning_door():
         }
     }
     return jsonify(response_consume_dic)
+
+
+@room.route("/api/room1/tem")
+def change_room1_tem():
+    low_tem = request.values.get("low_temp")
+    high_tem = request.args.get("high_temp")
+    room1 = Bedroom.query.filter_by(roomnumber='新二舍102').first()
+    room1.temlow = low_tem
+    room1.temhigh = high_tem
+    db.session.commit()
+    response = {
+        "meta": {
+            "msg": "修改成功",
+            "status": 200
+        }
+    }
+    return jsonify(response)
+
+
+@room.route("/api/room1/hum")
+def change_room1_hum():
+    low_hum = request.values.get("low_hum")
+    high_hum = request.args.get("high_hum")
+    room1 = Bedroom.query.filter_by(roomnumber='新二舍102').first()
+    room1.humlow = low_hum
+    room1.humhigh = high_hum
+    db.session.commit()
+    response = {
+        "meta": {
+            "msg": "修改成功",
+            "status": 200
+        }
+    }
+    return jsonify(response)
+
+
+@room.route("/api/room2/tem")
+def change_room2_tem():
+    low_tem = request.values.get("low_temp")
+    high_tem = request.args.get("high_temp")
+    room1 = Toilet.query.filter_by(roomnumber='新二舍102').first()
+    room1.temlow = low_tem
+    room1.temhigh = high_tem
+    db.session.commit()
+    response = {
+        "meta": {
+            "msg": "修改成功",
+            "status": 200
+        }
+    }
+    return jsonify(response)
+
+
+@room.route("/api/room2/hum")
+def change_room2_hum():
+    low_hum = request.values.get("low_hum")
+    high_hum = request.args.get("high_hum")
+    room1 = Toilet.query.filter_by(roomnumber='新二舍102').first()
+    room1.humlow = low_hum
+    room1.humhigh = high_hum
+    db.session.commit()
+    response = {
+        "meta": {
+            "msg": "修改成功",
+            "status": 200
+        }
+    }
+    return jsonify(response)
+
+
+@room.route("/api/room3/tem")
+def change_room3_tem():
+    low_tem = request.values.get("low_temp")
+    high_tem = request.args.get("high_temp")
+    room1 = Balcony.query.filter_by(roomnumber='新二舍102').first()
+    room1.temlow = low_tem
+    room1.temhigh = high_tem
+    db.session.commit()
+    response = {
+        "meta": {
+            "msg": "修改成功",
+            "status": 200
+        }
+    }
+    return jsonify(response)
+
+
+@room.route("/api/room3/hum")
+def change_room3_hum():
+    low_hum = request.values.get("low_hum")
+    high_hum = request.args.get("high_hum")
+    room1 = Balcony.query.filter_by(roomnumber='新二舍102').first()
+    room1.humlow = low_hum
+    room1.humhigh = high_hum
+    db.session.commit()
+    response = {
+        "meta": {
+            "msg": "修改成功",
+            "status": 200
+        }
+    }
+    return jsonify(response)
+
+
+
 
 

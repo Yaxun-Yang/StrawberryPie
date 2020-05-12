@@ -11,6 +11,8 @@ module.exports = {
     parser: 'babel-eslint'
   },
   rules: {
+    "no-console":"off",//在这禁止掉console报错检查
+    "no-irregular-whitespace":"off",//这禁止掉 空格报错检查
     "indent": ["off", 2],
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -19,11 +21,11 @@ module.exports = {
     "vue/no-parsing-error": [2, {
       "x-invalid-end-tag": false,
     }],
-    "no-unused-vars": [2, { 
+    "no-unused-vars": [2, {
       // 允许声明未使用变量
       "vars": "local",
       // 参数不检查
-      "args": "none" 
+      "args": "none"
     }],
   }
 }

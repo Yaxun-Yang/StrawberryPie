@@ -172,6 +172,39 @@ def get_information():
         return jsonify(response_consume_dic)
 
 
+@blue.route("/api/password/change", methods=['POST'])
+def password_change():
+    password = request.get_json()["password"]
+    user_information = Information.query.filter_by(username=user.username).first()
+    user_login = Login.query.filter_by(username=user_information.stuid).first()
+    user_login.password = password
+    print(user_login)
+    db.session.commit()
+    response = {
+        "meta": {
+            "msg": "修改成功",
+            "status": 200
+        }
+    }
+    return jsonify(response)
+
+
+@blue.route("/api/phone/change", methods=['POST'])
+def phone_change():
+    phone = request.get_json()["phonenum"]
+    code = request.get_json()["code"]
+    user_information = Information.query.filter_by(username=user.username).first()
+    user_information.phonenum = phone
+    db.session.commit()
+    response = {
+        "meta": {
+            "msg": "修改成功",
+            "status": 200
+        }
+    }
+    return jsonify(response)
+
+
 
 
 
