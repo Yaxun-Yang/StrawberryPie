@@ -183,7 +183,7 @@
       <workItem from="1589005455086" duration="12114000" />
       <workItem from="1589634567102" duration="474000" />
       <workItem from="1589681186796" duration="20107000" />
-      <workItem from="1589721201252" duration="10986000" />
+      <workItem from="1589721201252" duration="12949000" />
     </task>
     <servers />
   </component>
@@ -195,30 +195,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1583582758544" />
-    <state x="453" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588146156744">
+    <state x="453" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589734036204">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="453" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1588146156744" />
+    <state x="453" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1589734036204" />
     <state x="686" y="248" key="FileChooserDialogImpl" timestamp="1589720947165">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="686" y="248" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589720947165" />
-    <state width="1493" height="110" key="GridCell.Tab.0.bottom" timestamp="1589731673370">
+    <state width="1493" height="256" key="GridCell.Tab.0.bottom" timestamp="1589734342896">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="110" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589731673370" />
-    <state width="1493" height="110" key="GridCell.Tab.0.center" timestamp="1589731673370">
+    <state width="1493" height="256" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589734342896" />
+    <state width="1493" height="256" key="GridCell.Tab.0.center" timestamp="1589734342896">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="110" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589731673370" />
-    <state width="1493" height="110" key="GridCell.Tab.0.left" timestamp="1589731673370">
+    <state width="1493" height="256" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589734342896" />
+    <state width="1493" height="256" key="GridCell.Tab.0.left" timestamp="1589734342896">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="110" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589731673370" />
-    <state width="1493" height="110" key="GridCell.Tab.0.right" timestamp="1589731673370">
+    <state width="1493" height="256" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589734342896" />
+    <state width="1493" height="256" key="GridCell.Tab.0.right" timestamp="1589734342896">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="110" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589731673370" />
+    <state width="1493" height="256" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589734342896" />
     <state x="270" y="55" key="SettingsEditor" timestamp="1589721322470">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -235,7 +235,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Flask_day2$get_environment_condition.coverage" NAME="get_environment_condition Coverage Results" MODIFIED="1585191033020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/App/environment" />
     <SUITE FILE_PATH="coverage/Flask_day2$send_sms.coverage" NAME="send_sms Coverage Results" MODIFIED="1588821125903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/App/warning" />
-    <SUITE FILE_PATH="coverage/Flask_day2$Flask_day2.coverage" NAME="Flask-day2 Coverage Results" MODIFIED="1589731673358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Flask_day2$Flask_day2.coverage" NAME="Flask-day2 Coverage Results" MODIFIED="1589734342887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Flask_day2$build_token.coverage" NAME="build_token Coverage Results" MODIFIED="1589722213172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/App/token" />
   </component>
 </project>

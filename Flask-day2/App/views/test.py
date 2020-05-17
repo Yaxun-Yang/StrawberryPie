@@ -2,13 +2,13 @@ import this
 from time import sleep
 
 import cv2
+index = 1
+
+# def faces_exist(flags):
+#     return flags
 
 
-def faces_exist(flags):
-    return flags
-
-
-def save_video(video):
+def save_video(video, num):
     sz = (int(video.get(cv2.CAP_PROP_FRAME_WIDTH)),
             int(video.get(cv2.CAP_PROP_FRAME_HEIGHT)))
 
@@ -18,8 +18,9 @@ def save_video(video):
     fourcc = cv2.VideoWriter_fourcc(*'mpeg')
 
     ## open and set props
+    path = "./App/static/"
     vout = cv2.VideoWriter()
-    vout.open('./App/static/output.mp4', fourcc, fps, sz, True)
+    vout.open(path+str(num)+'.mp4', fourcc, fps, sz, True)
 
     cnt = 0
     while cnt < 20:
@@ -52,9 +53,8 @@ def make(video):
         minSize=(30, 30),
     )
     if len(faces) > 0:
-        faces_exist(True)
-    else:
-        faces_exist(False)
+        # faces_exist(True)
+        save_video(video, index)
     # save_video(faces)
     # 画矩形框
     for (x, y, w, h) in faces:
@@ -87,6 +87,8 @@ class VideoCamera(object):
         self.video.release()
 
     def get_frame(self):
+        global index
+        index = index + 1
         make(self.video)
         success, image = self.video.read()
         image = make(self.video)
@@ -94,8 +96,8 @@ class VideoCamera(object):
         # so we must encode it into JPEG in order to correctly display the
         # video stream.
         # make(self.video)
-        if True:
-            save_video(self.video)
+        # if True:
+        #     save_video(self.video, index)
         ret, jpeg = cv2.imencode('.jpg', image)
         return jpeg.tobytes()
 

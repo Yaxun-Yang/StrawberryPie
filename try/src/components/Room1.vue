@@ -98,7 +98,8 @@
   <!-- 空调 -->
     <br>
     <el-card class="card2" shadow="always">
-      <el-slider v-model="value3" vertical height="200px" :disabled="value4==false" format-tooltip="formatTooltip2" @change="airconditionChange"></el-slider>
+      <el-slider v-model="value3" vertical height="200px" :disabled="value4==false" format-tooltip="formatTooltip2"
+                 @change="airconditionChange" :max="40" :min="16"></el-slider>
       <div class="block">
         <h2>空 调</h2>
 <!--        <el-button class="icon" icon="el-icon-ice-cream-round" circle size="big"></el-button>-->
@@ -125,7 +126,8 @@
   <!-- 饮水机 -->
     <br>
     <el-card class="card2" shadow="always">
-      <el-slider v-model="value5" dis vertical height="200px" :disabled="value6==false" format-tooltip="formatTooltip2" @change="waterChange"></el-slider>
+      <el-slider v-model="value5" dis vertical height="200px" :disabled="value6==false"
+                 format-tooltip="formatTooltip2" @change="waterChange" :max="30" :min="15"></el-slider>
       <div class="block">
         <h2>饮水机</h2>
 <!--        <el-button class="icon" icon="el-icon-goblet-square-full" circle size="big"></el-button>-->
