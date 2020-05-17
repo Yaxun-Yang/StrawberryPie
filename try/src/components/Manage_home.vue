@@ -87,9 +87,9 @@
                     <el-card class="box-card1" shadow="never">
                         <div class="status">
                             <strong>危险警报：</strong>
-                            <span>一切正常</span>
+                            <span :class="{'warn':warn}">{{warning_information}}</span>
                             <span>
-                <i class="el-icon-circle-check"></i>
+                <i v-if="!warn" class="el-icon-circle-check"></i>
               </span>
                         </div>
                         <div class="select">
@@ -161,7 +161,9 @@
                     room: '',
                     people: '',
                     address: '铁道校区-新1舍、新2舍'
-                }
+                },
+                warning_information: "一切正常",
+                warn: false
             }
         },
         created() {
@@ -176,6 +178,11 @@
             this.manager.room = window.sessionStorage.getItem('room')
             this.manager.people = window.sessionStorage.getItem('people')
             this.manager.address = window.sessionStorage.getItem('address')
+            let warning_information = window.sessionStorage.getItem("warning_information")
+            if (warning_information != null) {
+                this.warn=true
+            }
+            this.warning_information = window.sessionStorage.getItem("warning_information")
         },
         methods: {
             async getManager() {
@@ -349,5 +356,8 @@
     }
     img {
         width: 100px;
+    }
+    .warn {
+        color: red;
     }
 </style>

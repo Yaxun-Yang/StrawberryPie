@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template, make_response, abort, Response, session, jsonify
-from ..models import Information, Consumption, Environment, Plant, Login, Admin
+from ..models import Information, Consumption, Environment, Plant, Login, Admin, Warn
 from ..requestuser.User import User
 from App.ext import db
 from App.token.build_token import Token
@@ -17,6 +17,11 @@ def try_vue():
     tokenprogramer = Token('api_secret具体值', 'project_code具体值', 'account具体值')
     token = tokenprogramer.get_token()
     login = Login.query.filter_by(username=getUsername, password=getPassword).all()
+    warn_1 = Warn.query.filter(Warn.address.contains('新二舍')).all()
+    warn_information = ""
+    for w in warn_1:
+        warn_information += w.type
+        print(warn_information)
     print(login[0].authetic)
     print(login[0].name)
     if login[0].authetic == 1:
@@ -34,7 +39,8 @@ def try_vue():
                     'floor': admin.floor,
                     'room': admin.room,
                     'people': admin.people,
-                    'address': admin.address
+                    'address': admin.address,
+                    "warning": warn_information
                 },
                 "token": token
             },
@@ -51,7 +57,11 @@ def try_vue():
         print("用户登录")
         # print(getUsername)
         information = Information.query.filter_by(stuid=getUsername).all()
-        # print(information)
+        warn_1 = Warn.query.filter_by(address='新二舍102').all()
+        warn_information = ""
+        for w in warn_1:
+            warn_information += w.type
+            print(warn_information)
         resData = []
         for x in information:
             resData.append({
@@ -86,6 +96,7 @@ def try_vue():
                 "stutype": resData[0]["stutype"],
                 'phonenum': resData[0]["phonenum"],
                 'time': resData[0]["time"],
+                "warning_information": warn_information,
                 "token": token
             },
             "meta": {

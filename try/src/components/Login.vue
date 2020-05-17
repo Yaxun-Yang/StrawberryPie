@@ -84,6 +84,7 @@ export default {
           window.sessionStorage.setItem('stutype', res.data.stutype)
           window.sessionStorage.setItem('time', res.data.time)
           window.sessionStorage.setItem('phonenum', res.data.phonenum)
+          window.sessionStorage.setItem('warning_information', res.data.warning_information)
           // window.sessionStorage.setItem('data', res.data)
           //2. 通过编程式导航跳转到后台主页，路由地址是 /home
           this.$router.push('/home')
@@ -101,6 +102,7 @@ export default {
           window.sessionStorage.setItem('room', res.data.manager.room)
           window.sessionStorage.setItem('people', res.data.manager.people)
           window.sessionStorage.setItem('address', res.data.manager.address)
+          window.sessionStorage.setItem('warning_information', res.data.manager.warning)
           // window.sessionStorage.setItem('data', res.data)
           //2. 通过编程式导航跳转到后台主页，路由地址是 /home
           this.$router.push('/homeadmin')

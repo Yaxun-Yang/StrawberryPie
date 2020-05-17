@@ -7,25 +7,6 @@
       <el-breadcrumb-item>主卧室</el-breadcrumb-item>
     </el-breadcrumb>
     <h1>您的主卧室共3台设备，已连接{{value}}台</h1>
-<!--    <el-card class="card1" shadow="always">-->
-<!--      &lt;!&ndash; 安全范围 &ndash;&gt;-->
-<!--      <el-popover placement="right" width="270" height="400" trigger="click">-->
-<!--        温度<el-slider v-model="setTemp" range :marks="marks1" @change="temChange()"></el-slider>-->
-<!--        <br>-->
-<!--        湿度<el-slider v-model="setHumid" range :marks="marks2"></el-slider>-->
-<!--        <el-button class="change" slot="reference" type="primary" plain>-->
-<!--          <span class="change_text">点击以修改安全范围</span>-->
-<!--        </el-button>-->
-<!--      </el-popover>-->
-<!--      &lt;!&ndash; 显示温度湿度 &ndash;&gt;-->
-<!--      <span>-->
-<!--        <el-button icon="el-icon-sunny" circle size="small"></el-button>-->
-<!--        <b> {{temp}}</b>℃-->
-<!--      </span>-->
-<!--      <el-divider direction="vertical"></el-divider>-->
-<!--      <span class="humidity">{{humid}}%</span>-->
-<!--      <span class="humidity_text">空气湿度</span>-->
-<!--    </el-card>-->
     <el-card class="card1" shadow="always" style="width: 300px;height: 280px;">
       <!-- 显示温度湿度 -->
       <div style="background-color: #fffeeb;width: 180px;">
@@ -76,7 +57,8 @@
         <el-switch
           v-model="door_value"
           active-text="已连接"
-          inactive-text="未连接">
+          inactive-text="未连接"
+          @change="doorConnect()">
         </el-switch>
       </div>
       <div class="door">
@@ -141,7 +123,7 @@
 </template>
 
 <script>
-export default {
+  export default {
   data () {
     return {
       value: 3,
@@ -352,6 +334,16 @@ export default {
     sendWarningDoorToCompo() {
       alert("已向组件发送请求")
       this.$root.Bus.$emit('doorWarning', '门未关')
+    },
+    async doorConnect() {
+      const { data: res } = await this.$http.put(
+              `room1/door/change/${this.door_value}`
+      )
+      if (res.meta.status !== 200) {
+        return this.$message.error('修改失败，请重新输入')
+      }
+      console.log(res.meta.status)
+      this.$message.success('修改成功')
     }
   },
   created() {

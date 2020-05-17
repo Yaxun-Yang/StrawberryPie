@@ -101,7 +101,7 @@ export default {
   methods: {
     // 修改关灯时间
     async closeTime() {
-      alert(this.close_time)
+      // alert(this.close_time)
       const { data: res } = await this.$http.put(
         `lamp/closetime/${this.close_time}`
       )
@@ -112,7 +112,7 @@ export default {
     },
     // 修改提醒关灯时间
     async remindTime() {
-      alert(this.close_time)
+      // alert(this.close_time)
       const { data: res } = await this.$http.put(
         `lamp/remindtime/${this.remind_time}`
       )

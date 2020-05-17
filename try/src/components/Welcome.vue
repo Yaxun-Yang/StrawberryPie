@@ -58,9 +58,9 @@
         <el-card class="box-card1" shadow="never">
             <div class="status">
                 <strong>状态：</strong>
-                <span>一切正常</span>
+                <span :class="{'warn':warn}">{{warning_information}}</span>
                 <span>
-          <i class="el-icon-circle-check"></i>
+            <i class="el-icon-circle-check" v-if="!warn"></i>
         </span>
             </div>
             <div class="select">
@@ -70,7 +70,7 @@
                 <el-col :span="8">
                     <el-card class="card1">
                         <div>
-                            <img height="150px"  src="../assets/bedroom.png">
+                            <img height="150px"  src="../assets/m1_1.jpeg">
                         </div>
                     </el-card>
                 </el-col>
@@ -78,7 +78,7 @@
                     <el-card class="card1">
                         <div>
 
-                            <img class="washroom" height="160px"  width="90px" src="../assets/washroom.png">
+                            <img class="washroom" height="160px"  width="90px" src="../assets/m2_1.jpg">
 
                         </div>
                     </el-card>
@@ -86,7 +86,7 @@
                 <el-col :span="8">
                     <el-card class="card1">
                         <div>
-                            <img class="yangtai" height="130px"  width="" src="../assets/yangai.png">
+                            <img class="yangtai" height="130px"  width="" src="../assets/m3_1.jpg">
                         </div>
                     </el-card>
                 </el-col>
@@ -101,6 +101,8 @@
                 users_info: {
                 },
                 username:'',
+                warning_information: "一切正常",
+                warn: false
             }
         },
         created() {
@@ -115,6 +117,11 @@
                 this.users_info["roomnumber"] = window.sessionStorage.getItem("roomnumber")
                 this.users_info["classnum"] = window.sessionStorage.getItem("classnum")
                 this.users_info["roommate"] = window.sessionStorage.getItem("roommate").split("+")
+                let warning_information = window.sessionStorage.getItem("warning_information")
+                if (warning_information != null) {
+                    this.warn=true
+                }
+                this.warning_information = window.sessionStorage.getItem("warning_information")
             }
         }
     }
@@ -188,5 +195,9 @@
 
     .try {
         width: 86px;
+    }
+
+    .warn {
+        color: red;
     }
 </style>

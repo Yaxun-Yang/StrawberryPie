@@ -46,7 +46,11 @@
                                 <el-table-column prop="time" label="时间"></el-table-column>
                                 <el-table-column prop="dorm" label="宿舍"></el-table-column>
                                 <el-table-column prop="type" label="类型"></el-table-column>
-                                <el-table-column prop="video" label="视频记录"></el-table-column>
+                                <el-table-column prop="video" label="视频记录">
+                                    <template slot-scope="scope">
+                                        <el-button @click="handleClick(scope.row)" type="text" size="small">{{scope.row.video}}</el-button>
+                                    </template>
+                                </el-table-column>
                             </el-table>
 
                             <!-- 分页区域 -->
@@ -64,6 +68,17 @@
                 </el-main>
             </el-container>
         </el-container>
+        <el-dialog
+                title="Video"
+                :visible.sync="dialogVisible"
+                width="40%">
+            <!--            <span>这是一段信息</span>-->
+            <!--            <span slot="footer" class="dialog-footer">-->
+            <!--                <el-button @click="dialogVisible = false">取 消</el-button>-->
+            <!--                <el-button type="primary" @click="dialogVisible = false">确 定</el-button>-->
+            <!--            </span>-->
+            <video controls="" autoplay="" name="media" class="video"><source src="http://localhost:5000/api/exception/video" type="video/mp4"></video>
+        </el-dialog>
     </div>
 </template>
 
@@ -77,7 +92,8 @@
                     pagesize: 7
                 },
                 exceptionList: [],
-                total: 0
+                total: 0,
+                dialogVisible: false
             }
         },
         created() {
@@ -113,6 +129,13 @@
                     window.sessionStorage.setItem('activePath', activePath)
                     this.activePath = activePath
                 }
+            },
+            async handleClick(row) {
+                const {data: res} = await this.$http.get("exception_video", {
+                    params: row
+                })
+                console.log(res)
+                this.dialogVisible = true
             }
         }
     }
@@ -188,6 +211,9 @@
     }
     img {
         width: 100px;
+    }
+    .video {
+        width: 400px;
     }
 
 </style>
