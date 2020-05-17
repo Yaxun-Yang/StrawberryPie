@@ -6,6 +6,8 @@
       <el-breadcrumb-item>监控查看</el-breadcrumb-item>
       <el-breadcrumb-item>实时监控</el-breadcrumb-item>
     </el-breadcrumb>
+        <img id="bg" src="http://127.0.0.1:5000/api/video/now">
+<!--            <video controls="" autoplay="" name="media" class="video"><source src="http://127.0.0.1:5000/api/video/now" type="video/mp4"></video>-->
     </div>
 </template>
 
@@ -21,7 +23,7 @@ export default {
         }
     },
     created() {
-        this.get_now_video()
+        // this.get_now_video()
     }
 }
 </script>

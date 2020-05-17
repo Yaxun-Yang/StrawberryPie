@@ -1,6 +1,7 @@
 def judge_new_plant():
     return True
 
+
 def catch_plant():
     #如果获取到了 judge为true 否则为false
     judge = judge_new_plant()

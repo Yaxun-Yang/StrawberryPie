@@ -1,4 +1,6 @@
 from flask import Blueprint, request, render_template, make_response, abort, Response, session, jsonify
+
+from .test import VideoCamera
 from ..models import Historyvideo, Information
 from App.ext import db
 # from App.views.first import user
@@ -10,20 +12,30 @@ video = Blueprint('video', __name__)
 video_name = ''
 
 
+def gen(camera):
+    while True:
+        frame = camera.get_frame()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+
 @video.route("/api/video/now", methods=['GET'])
 def get_video_now():
     user_token = request.headers.get("Authorization")
     # print(user_token)
     user = authorization_token(userList, user_token)
-    if user is not None:
+    if user is None:
+        print("show")
         # 查看实时视频
-        response_consume_dic = {
-            "meta": {
-                "msg": "获取成功",
-                "status": 200
-            }
-        }
-        return jsonify(response_consume_dic)
+        return Response(gen(VideoCamera()),
+                        mimetype='multipart/x-mixed-replace; boundary=frame')
+        # response_consume_dic = {
+        #     "meta": {
+        #         "msg": "获取成功",
+        #         "status": 200
+        #     }
+        # }
+        # return jsonify(response_consume_dic)
 
 
 @video.route("/api/video/history", methods=['GET'])

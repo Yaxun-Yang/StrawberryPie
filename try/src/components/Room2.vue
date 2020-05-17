@@ -59,7 +59,17 @@
       <el-slider v-model="value1" vertical height="200px" :disabled="value2==false" format-tooltip="formatTooltip1" @change="tempLightChange"></el-slider>
       <div class="block">
         <h2>挂 灯</h2>
-        <el-button class="icon" icon="el-icon-s-opportunity" circle size="big"></el-button>
+<!--        <el-button class="icon" icon="el-icon-s-opportunity" circle size="big"></el-button>-->
+        <el-tooltip effect="light" content="挂灯连接正常" placement="top">
+          <div class="link"  v-if="value2">
+            <i class="el-icon-s-opportunity"></i>
+          </div>
+        </el-tooltip>
+        <el-tooltip effect="light" content="挂灯未连接" placement="top">
+          <div class="no-link" v-if="!value2">
+            <i class="el-icon-s-opportunity" ></i>
+          </div>
+        </el-tooltip>
         <span class="light" :hidden="value2==false">  {{value1}}%</span>
         <span class="light_text">亮度</span>
         <el-switch
@@ -234,5 +244,28 @@ export default {
     position: absolute;
     right: 10px;
     top: 100px;
+  }
+  .link{
+    background-color: #ffffff;
+    padding-left: 5px;
+    /*padding-bottom: 10px;*/
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    font-size: 30px;
+    /*font-weight: 10px;*/
+    font-weight: normal;
+    color: #16b82c;
+  }
+  .no-link{
+    background-color: #ffffff;
+    padding-left: 5px;
+    /*padding-bottom: 10px;*/
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    font-size: 30px;
+    font-weight: normal;
+    color: rgba(255, 0, 0, 0.79);
   }
 </style>

@@ -17,7 +17,7 @@ manager.add_command('db', MigrateCommand)
 #     return 'Hello World!'
 
 
-#app的errorhandler和blue的handler的区别 app的可以捕获全局的错误
+# app的errorhandler和blue的handler的区别 app的可以捕获全局的错误
 @app.errorhandler(404)
 def handler(error):
     return '404'

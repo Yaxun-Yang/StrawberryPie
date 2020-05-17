@@ -74,7 +74,17 @@
       </el-slider>
       <div class="block">
         <h2>台 灯</h2>
-        <el-button class="icon" icon="el-icon-s-opportunity" circle size="big"></el-button>
+<!--        <el-button class="icon" icon="el-icon-s-opportunity" circle size="big"></el-button>-->
+        <el-tooltip effect="light" content="挂灯连接正常" placement="top">
+          <div class="link"  v-if="value2">
+            <i class="el-icon-s-opportunity"></i>
+          </div>
+        </el-tooltip>
+        <el-tooltip effect="light" content="挂灯未连接" placement="top">
+          <div class="no-link" v-if="!value2">
+            <i class="el-icon-s-opportunity" ></i>
+          </div>
+        </el-tooltip>
         <span class="light" :hidden="value2==false">  {{value1}}%</span>
         <span class="light_text">亮度</span>
         <el-switch
@@ -91,7 +101,17 @@
       <el-slider v-model="value3" vertical height="200px" :disabled="value4==false" format-tooltip="formatTooltip2" @change="airconditionChange"></el-slider>
       <div class="block">
         <h2>空 调</h2>
-        <el-button class="icon" icon="el-icon-ice-cream-round" circle size="big"></el-button>
+<!--        <el-button class="icon" icon="el-icon-ice-cream-round" circle size="big"></el-button>-->
+        <el-tooltip effect="light" content="空调连接正常" placement="top">
+          <div class="link" v-if="value4">
+            <i class="el-icon-ice-cream-round" ></i>
+          </div>
+        </el-tooltip>
+        <el-tooltip effect="light" content="空调未连接" placement="top">
+          <div class="no-link"  v-if="!value4">
+            <i class="el-icon-ice-cream-round"></i>
+          </div>
+        </el-tooltip>
         <span class="light" :hidden="value4==false">  {{value3}}℃</span>
         <span class="light_text">温度</span>
         <el-switch
@@ -108,7 +128,17 @@
       <el-slider v-model="value5" dis vertical height="200px" :disabled="value6==false" format-tooltip="formatTooltip2" @change="waterChange"></el-slider>
       <div class="block">
         <h2>饮水机</h2>
-        <el-button class="icon" icon="el-icon-goblet-square-full" circle size="big"></el-button>
+<!--        <el-button class="icon" icon="el-icon-goblet-square-full" circle size="big"></el-button>-->
+        <el-tooltip effect="light" content="饮水机连接正常" placement="top">
+          <div class="link"  v-if="value6">
+            <i class="el-icon-goblet-square-full"></i>
+          </div>
+        </el-tooltip>
+        <el-tooltip effect="light" content="饮水机未连接" placement="top">
+          <div class="no-link" v-if="!value6">
+            <i class="el-icon-goblet-square-full" ></i>
+          </div>
+        </el-tooltip>
         <span class="light" :hidden="value6==false">  {{value5}}℃</span>
         <span class="light_text">温度</span>
         <el-switch
@@ -429,5 +459,28 @@
     position: absolute;
     left: 200px;
     top: 20px;
+  }
+  .link{
+     background-color: #ffffff;
+     padding-left: 5px;
+     /*padding-bottom: 10px;*/
+     width: 40px;
+     height: 40px;
+     border-radius: 30px;
+     font-size: 30px;
+     /*font-weight: 10px;*/
+     font-weight: normal;
+     color: #16b82c;
+   }
+  .no-link{
+    background-color: #ffffff;
+    padding-left: 5px;
+    /*padding-bottom: 10px;*/
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    font-size: 30px;
+    font-weight: normal;
+    color: rgba(255, 0, 0, 0.79);
   }
 </style>
